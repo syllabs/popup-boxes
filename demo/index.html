@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        td {
+            padding: 5px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body ng-app="Demo">
+    <table border="1">
+        <tr>
+            <td ng-controller="DemoCtrl">
+                <h1>confirm without model</h1>
+                <h2 ng-bind="value"></h2>
+                <button ng-click="value='initial value'">reset</button>
+                <button ng-click="value='clicked!'" confirm="{{confirmQuestion}}">click me</button><br />
+                question: <input ng-model="confirmQuestion"></input>
+            </td>
+            <td ng-controller="DemoCtrl">
+                <h1>confirm with model</h1>
+                <h2 ng-bind="value"></h2>
+                <button ng-click="value='initial value'">reset</button>
+                <button confirm-model="value" confirm="{{confirmQuestion}}">click me</button><br />
+                question: <input ng-model="confirmQuestion"></input>
+            </td>
+        </tr>
+        <tr>
+            <td ng-controller="DemoCtrl">
+                <h1>alert without model</h1>
+                <h2 ng-bind="value"></h2>
+                <button ng-click="value='initial value'">reset</button>
+                <button ng-click="value='clicked!'" alert="{{confirmQuestion}}">click me</button><br />
+                question: <input ng-model="confirmQuestion"></input>
+            </td>
+            <td ng-controller="DemoCtrl">
+                <h1>alert with model</h1>
+                <h2 ng-bind="value"></h2>
+                <button ng-click="value='initial value'">reset</button>
+                <button alert-model="value" alert="{{confirmQuestion}}">click me</button><br />
+                question: <input ng-model="confirmQuestion"></input>
+            </td>
+        </tr>
+        <tr>
+            <td ng-controller="DemoCtrl">
+                <h1>prompt without model</h1>
+                <h2 ng-bind="value"></h2>
+                <button ng-click="value='initial value'">reset</button>
+                <button ng-click="value='clicked!'" prompt="{{confirmQuestion}}">click me</button><br />
+                question: <input ng-model="confirmQuestion"></input>
+            </td>
+            <td ng-controller="DemoCtrl">
+                <h1>prompt with model</h1>
+                <h2 ng-bind="value"></h2>
+                <button ng-click="value='initial value'">reset</button>
+                <button prompt-model="value" prompt="{{confirmQuestion}}">click me</button><br />
+                question: <input ng-model="confirmQuestion"></input>
+            </td>
+        </tr>
+    </table>
+
+<script src="/lib/jquery-1.10.2.js"></script>
+<script src="/lib/angular-1.1.5.js"></script>
+<script src="/src/popup-boxes.js"></script>
+<!--script src="/dist/popup-boxes.min.js"></script-->
+
+<script type="text/javascript">
+var app = angular.module('Demo', ['popup-boxes']);
+app.controller('DemoCtrl', function($scope) {
+    $scope.value = 'initial value';
+    $scope.confirmQuestion = 'Are you sure?';
+});
+</script>
+
+</body>
+</html>
